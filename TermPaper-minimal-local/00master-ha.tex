@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				MASTER FILE for Term Paper (minimal version) -- 2023.11.06
+%%% 			Template: Antonio Machicao y Priemer & Elisabeth Eberle 
+%%%				Compile: PDFLaTeX BibTeX PDFLaTeX PDFLaTeX 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 12pt]{scrartcl}
+
+	\setcounter{tocdepth}{4}
+	\setcounter{secnumdepth}{3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% additional:  packages, commands, metadata and hyphenation
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% 
+\input{01packages-ha}
+
+\input{02commands-ha}
+
+%% only needed when the maketitle command is being used:
+\input{03metadata-ha}
+
+\input{04hyphenation-ha}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Preamble's End                  
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}       
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Frontmatter                      
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% The information for your ``Title page'' is in the following file
+
+\input{sections/sec00Titlepage}
+
+
+%% For an automatic ``Title page'' (from your metadata), uncomment the following line commands
+
+%\maketitle                
+%\thispagestyle{empty}
+%\clearpage
+
+
+%% uncomment if you have ``Preface/Summary'', ``Acknowledgements''  and/or ``Abbreviations''
+
+%	\input{sections/sec00SummaryGerman}
+%
+%	\input{sections/sec00Acknowledgements}
+%
+%	\input{sections/sec00Abbreviations}
+	
+	
+\tableofcontents
+
+\listoffigures
+
+\listoftables    
+    
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Chapters
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setcounter{page}{2} %text begins at page 2 because of contents being on page 1
+
+\input{sections/sec01Intro}
+%\clearpage
+
+\input{sections/sec02Theory}
+%\clearpage
+
+\input{sections/sec03Help}
+%\clearpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{singlespace}
+	
+\clearpage
+
+\phantomsection %this lets literature appear in your toc
+\addcontentsline{toc}{section}{References}
+
+	
+% For the Bibliography in German in the Style of "Chicago Manual of Style" use this	
+%\bibliographystyle{deChicagoMyP}
+
+%%%% For the Bibliography in English in the Style  "unified" use this	
+%\bibliographystyle{unified}
+
+%%%% For the Bibliography in English in the Style of "Chicago Manual of Style" use this	
+\bibliographystyle{enChicagoMyP}
+
+\bibliography{05literature-ha}
+
+\end{singlespace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	
+\end{document}
