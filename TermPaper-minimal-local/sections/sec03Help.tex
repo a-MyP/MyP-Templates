@@ -23,18 +23,18 @@ Here you can see the result of some of the own commands (name of command in bold
 	\multicolumn{2}{l|}{\textbf{German}} & \multicolumn{2}{l}{\textbf{English}} \\
 	\textbf{input} & \textbf{output} & \textbf{input} & \textbf{output}  	\\
 \midrule
-	\textbackslash dash & \dash & 	\textbackslash ao & \ao \\
-	\textbackslash idR & \idR  & \textbackslash cf\{page xy\} & \cf{page xy} \\
-	\textbackslash su & \su & \textbackslash cfe\{ex:1\} & \cfe{ex:1} \\
-	\textbackslash ua & \ua  & \textbackslash ia & \ia \\
-	\textbackslash va & \va  & \textbackslash ie & \ie \\
-	\textbackslash zB & \zB & \textbackslash fe & \fe \\
-	& & \textbackslash vs & \vs\\
-	& & \textbackslash wrt & \wrt    
+	\textbackslash dash & \dash & 	\textbackslash ao & \ao \\ %%% ZG out
+	\textbackslash idR & \idR  & \textbackslash cf\{page xy\} & \cf{page xy} \\ 
+	\textbackslash su & \su  & \textbackslash cfe\{ex:1\} & \cfe{ex:1} \\ 
+	\textbackslash ua & \ua  & \textbackslash ia & \ia \\ %%% ZG out
+	\textbackslash va & \va  & \textbackslash ie & \ie \\ %%% ZG out
+	\textbackslash zB & \zB & \textbackslash fe & \fe \\ %%% ZG out
+	& & \textbackslash vs & \vs\\ %%% ZG out
+	& & \textbackslash wrt & \wrt   %%% ZG out
 	\end{tabular}
 \caption{Abbreviations}
 \end{table}
-
+%%%%nur \cf{page xy} und \cfe{ex:1} nötig
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 %\subsubsection{Type setting}
@@ -44,13 +44,13 @@ Here you can see the result of some of the own commands (name of command in bold
 	\begin{tabular}{l|l|l}
 		\textbf{input} & \textbf{output} & \textbf{function} \\
 		\midrule
-		\textbackslash gqq\{test\} & \gqq{test} & German double quotation marks \\
-		\textbackslash gq\{test\} & \gq{test} & German single quotation marks\\
-		\textbackslash gs\{test\} & \gs{test} & putting something between dashes \\
-		\textbackslash obj\{test\} & \obj{test} & marking object language \\
-		\textbackslash term\{test\} & \term{test} & for terminology \\
-		\textbackslash size\{test\} & \size{test} & e.g.\ to resize quotations \\
-		Test\textbackslash scdown\{test\} & Test\scdown{test} & marking grammatical categories \\
+		\textbackslash gqq\{test\} & \gqq{test} & German double quotation marks \\  
+		\textbackslash gq\{test\} & \gq{test} & German single quotation marks\\ 
+		\textbackslash gs\{test\} & \gs{test} & putting something between dashes \\ %%% ZG out
+		\textbackslash obj\{test\} & \obj{test} & marking object language \\ 
+		\textbackslash term\{test\} & \term{test} & for terminology \\ 
+		\textbackslash size\{test\} & \size{test} & e.g.\ to resize quotations \\ 
+		Test\textbackslash scdown\{test\} & Test\scdown{test} & marking grammatical categories \\ 
 	\end{tabular}
 \caption{Type setting}
 \end{table}
@@ -65,10 +65,10 @@ Here you can see the result of some of the own commands (name of command in bold
 	\begin{tabular}{l|l|l}
 		\textbf{input} & \textbf{output} & \textbf{function} \\
 		\midrule
-		\textbackslash ra Test & \ra Test & right arrow without space \\
-		\textbackslash ras Test & \ras Test & right arrow with space \\
-		\textbackslash la Test & \la Test & left arrow without space  \\
-		\textbackslash las Test & \las Test & left arrow with space \\
+		\textbackslash ra Test & \ra Test & right arrow without space \\ 
+		\textbackslash ras Test & \ras Test & right arrow with space \\  %%% ZG out
+		\textbackslash la Test & \la Test & left arrow without space  \\ 
+		\textbackslash las Test & \las Test & left arrow with space \\ %%% ZG out
 	\end{tabular}
 \caption{Linguistic typography I}
 \end{table}
@@ -82,16 +82,16 @@ Here you can see the result of some of the own commands (name of command in bold
 \begin{tabular}{l|l|p{7.5cm}}
 	\textbf{input} & \textbf{output} & \textbf{function} \\
 	\midrule
-		\textbackslash ab\{ch\} &\ab{ch}& notation for features and graphemes \\
-		\textbackslash abe\{test\} & \abe{test} & for features and graphemes in italics \\
-		\textbackslash type\{e,t\} & \type{e,t} &  for single types \\
-		\$\textbackslash typem\{e,t\textbackslash typem\{e,t\}\}\$ & $\typem{e,t\typem{e,t}}$ &  for complex types in math mode \\
-		\$\textbackslash ds\{test\}\$ & $\ds{test}$ & for defining denotational sets: $R \in $ $\ds{\typem{e, \typem{e,t}}}$ \\
-		\textbackslash sem\{test\} & \sem{test} & meaning brackets \\
-		\$\textbackslash semm\{test\}\$ & $\semm{test}$ & meaning brackets in math mode \\		\textbackslash pred\{test\} &  \pred{test} & for differentiating between expressions in object language and predicates in formulae: $\semm{sleep} := \lambda x . \pred{sleep} (x)$\\
-		\textbackslash predO\{test\} & \predO{test}  & for operators: $\lambda x \lambda P . \predO{beg}(P(x))$ \\
-		\textbackslash val\{neut\} & \val{neut} & for HPSG values\\
-		\textbackslash feat\{gender\} & \feat{gender} & for HPSG features \\
+		\textbackslash ab\{ch\} &\ab{ch}& notation for features and graphemes \\ %%% ZG out
+		\textbackslash abe\{test\} & \abe{test} & for features and graphemes in italics \\ %%% ZG out
+		\textbackslash type\{e,t\} & \type{e,t} &  for single types \\ 
+		\$\textbackslash typem\{e,t\textbackslash typem\{e,t\}\}\$ & $\typem{e,t\typem{e,t}}$ &  for complex types in math mode \\ 
+		\$\textbackslash ds\{test\}\$ & $\ds{test}$ & for defining denotational sets: $R \in $ $\ds{\typem{e, \typem{e,t}}}$ \\ 
+		\textbackslash sem\{test\} & \sem{test} & meaning brackets \\ 
+		\$\textbackslash semm\{test\}\$ & $\semm{test}$ & meaning brackets in math mode \\		\textbackslash pred\{test\} &  \pred{test} & for differentiating between expressions in object language and predicates in formulae: $\semm{sleep} := \lambda x . \pred{sleep} (x)$\\ 
+		\textbackslash predO\{test\} & \predO{test}  & for operators: $\lambda x \lambda P . \predO{beg}(P(x))$ \\  
+		\textbackslash val\{neut\} & \val{neut} & for HPSG values\\ %%% ZG out: wo sind Unterschiede zu \obj{test}
+		\textbackslash feat\{gender\} & \feat{gender} & for HPSG features \\ %%% ZG out: wichtig wo sind Unterschiede zu \term{test}
 		&& \\
 	\midrule
 	&&\\
@@ -127,13 +127,14 @@ Here you can see the result of some of the own commands (name of command in bold
 \begin{tabular}{l|l}
 		\textbf{input} & \textbf{output} \\
 	\midrule
-\textbackslash ezerobar\{X\} & \ezerobar{X} \\
-\textbackslash exprime\{X\} & \exprime{X} \\
-\textbackslash exxprime\{X\} & \exxprime{X} \\
-\textbackslash exxxprime\{X\} & \emph{\exxxprime{X}} \\
-\textbackslash emaxbar\{X\} & \emaxbar{X} \\
+\textbackslash ezerobar\{X\} & \ezerobar{X} \\ %%% ZG out: kann man mut \textit{\xxxprime{X}}
+\textbackslash exprime\{X\} & \exprime{X} \\ %%% ZG out
+\textbackslash exxprime\{X\} & \exxprime{X} \\ %%% ZG out
+\textbackslash exxxprime\{X\} & \emph{\exxxprime{X}} \\ %%% ZG out
+\textbackslash emaxbar\{X\} & \emaxbar{X} \\ %%% ZG out
 \end{tabular}
 \captionof{table}{Notation in italics}
+
 
 \end{multicols}
 
@@ -142,9 +143,9 @@ Here you can see the result of some of the own commands (name of command in bold
 \begin{tabular}{l|l}	
 \textbf{input} & \textbf{output} \\
 	\midrule
-\textbackslash eibar\{X\} & \eibar{X} \\
-\textbackslash eiibar\{X\} & \eiibar{X} \\
-\$\textbackslash overbar\{X\}\$ in math mode & $\overbar{X}$ \\
+\textbackslash eibar\{X\} & \eibar{X} \\ %%% ZG out
+\textbackslash eiibar\{X\} & \eiibar{X} \\ %%% ZG out
+\$\textbackslash overbar\{X\}\$ in math mode & $\overbar{X}$ \\ %%% ZG out: kann immer mit \textit{\iibar{X}}
 \end{tabular}
 \caption{Notation for the \texttt{gb4e} commands, but in italics}
 %\captionof{table}{Notation for the \texttt{gb4e} commands, but in italics}
@@ -257,7 +258,7 @@ You can't use tabulators in \LaTeX\, but there is a much neater way to position 
 
 \medskip
 
-\noindent \verb|\settowidth\jamwidth{[Test jambox]}|
+\noindent \verb|\settowidth\jamwidth{[Test jambox]}| %%% ZG: nicht klar 
 
 \smallskip
 
@@ -277,13 +278,13 @@ Peter has Mary frightened\\ \jambox{[Exp-Object verb]}
 
 \ex
 \gll Maria liebt Peter.\\
-`Mary loves Peter.'\\ \jambox{[Exp-Subject verb]}
+`Mary loves Peter.'\\ \jambox{[Exp-Subject verb]} %%% ZG out: wieso zweimal?
 \z
 
 
-\noindent If you want to write preliminary margin notes,\rnote{This note is red.} you can use the command \texttt{\textbackslash rnote} for a red note.
+\noindent If you want to write preliminary margin notes,\rnote{This note is red.} you can use the command \texttt{\textbackslash rnote} for a red note. %%% ZG out
 
-The command \texttt{\textbackslash bnote} \bnote{This comment is blue.} lets you write blue notes.
+The command \texttt{\textbackslash bnote} \bnote{This comment is blue.} lets you write blue notes. %%% ZG out: nicht unbedingt wichtig für HA, aber generell hilfreich 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -344,14 +345,14 @@ By using the command \texttt{\textbackslash includegraphics} from the package \t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Examples for different citation commands with \texttt{natbib}}
+\subsection{Examples for different citation commands with \texttt{natbib}} 
 \label{ssec:CitationCommands}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 Here are some examples for citation commands. You can find the IDs for every bibliography entry in the file \texttt{05literature-ha}, but they are also being suggested as soon as you type in one of the \texttt{\textbackslash cite} commands.
 
-
+%%%% super hilfreich
 \nocite{Nolda&Co14a}
 
 \vspace{.5cm}
@@ -386,12 +387,13 @@ Here are some examples for citation commands. You can find the IDs for every bib
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Examples for different bibliographical entries}
+\subsection{Examples for different bibliographical entries}  %%% ZG out
 \label{ssec:BibEntries}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 In order to see which information you need in your Bib\TeX\ file for every different entry type (article, book, manuscript, etc.), check the file: \texttt{05literature-ha}, or \citet{Freitag&MyP15a}. If you want to see the output for every specific entry type (\fe \texttt{phdthesis} \vs \texttt{book}), take a look at the bibliography of this PDF. This only works in some cases, but you can also try to hold \textsc{Ctrl} (or \textsc{Cmd} in Mac) and click on the entries' IDs. If it turns underlined and blue, you will be taken to this exact entry in the \texttt{05literature-ha} file.
+
 
 
 \begin{itemize*}
@@ -420,7 +422,7 @@ In order to see which information you need in your Bib\TeX\ file for every diffe
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Helpful literature}
+\subsection{Helpful literature} %%% ZG out
 \label{ssec:HelpLiterature}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
