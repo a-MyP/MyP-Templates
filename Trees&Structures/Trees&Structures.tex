@@ -1,0 +1,1549 @@
+% !TEX TS-program = pdflatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_GB
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template for Trees & Structures
+%%% Author: Antonio Machicao y Priemer
+%%% Compile: PDF BibTeX PDF PDF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{scrartcl}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGES:
+\usepackage[utf8]{inputenc}
+\usepackage[T3,T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}		%coloured elements
+\usepackage[ngerman,english]{babel}
+
+\usepackage{natbib}
+	\setcitestyle{notesep={:~}}
+	
+\usepackage[noenc,safe]{tipa}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+
+
+%% TikZ-qtree
+\usepackage{tikz-qtree}
+	\usetikzlibrary{positioning}
+
+%% Forest
+\usepackage[linguistics,edges]{forest}
+
+%% AVM
+\usepackage{avm}
+
+%%% Setting of avm (see LSP Guidelines)
+%% http://langsci-press.org/public/downloads/LangSci_Guidelines.pdf
+%	\avmfont{\sc}
+%	\avmvalfont{\it}
+\avmfont{\normalfont \scshape} 
+\avmvalfont{\normalfont \itshape} 
+%% command to fontify the type values of an avm 
+\newcommand{\tpv}[1]{{\avmjvalfont #1}} 
+%% command to fontify the type of an avm and avmspan it
+\newcommand{\tp}[1]{\avmspan{\tpv{#1}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Global tikzset
+
+% has strange side effects
+% allows for glosses in trees
+\tikzset{every tree node/.style={align=left, anchor=north}}
+\tikzset{every roof node/.append style={inner sep=0.1pt,text height=2ex,text depth=0.3ex}}
+% alignment of the leave nodes:
+% http://tex.stackexchange.com/questions/163056/aligning-several-trees-to-the-baseline
+% seems not to work
+\tikzset{every leaf node/.append style={text depth=0pt}}
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Global forestset
+\forestset{
+	%% makes the tree appear lighter in color:
+	background tree/.style={for tree={text opacity=0.2,draw opacity=0.2,edge={draw opacity=0.2}}},
+	%% allows for branch-offs even when there's no node (this set needs to be written in the position of the "missing" node aswell):
+	empty nodes/.style={
+		delay={where content={}{shape=coordinate,for parent={for
+					children={anchor=north}}}{}}},
+	%% aligns every terminal node with the tree's lowest terminal node:
+	bottom word/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,
+			where n children=0{tier=word}
+			{}}},
+	%% edges appear as arrows	
+	%% https://tex.stackexchange.com/questions/187565/downwards-arrows-in-forest
+	edgy/.style={for tree={edge={->} }},
+}
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%% METADATA:
+
+\title{Trees \& Structures}
+
+\subtitle{(avm, forest, tikz)}
+
+\author{Antonio Machicao y Priemer\\
+	\normalsize \url{https://hu.berlin/aMyP}%\\
+%	\small \href{mailto:machicao.y.priemer@hu-berlin.de}{machicao.y.priemer@hu-berlin.de}
+	}
+
+%\date{13. Juni 2013}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+%\nocite{Nordhoff&Co}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+For this file you will need the following packages:
+
+\begin{itemize}
+	
+	\item Fontenc package with T1 and T3 option:
+	
+		\verb|\usepackage[T3,T1]{fontenc}|
+	
+	\item Xcolor package for colored elements in trees:
+	
+		\verb|\usepackage{xcolor}|
+	
+	\item Tipa package with no encoding and safe option:
+	
+		\verb|\usepackage[noenc,safe]{tipa}|
+	
+	\item TikZ-qtree package with the positioning library:
+	
+		\verb|\usepackage{tikz-qtree}|
+	
+		\verb|\usetikzlibrary{positioning}|
+	
+	\item Forest package with linguistics option:
+	
+		\verb|\usepackage[linguistics]{forest}|
+	
+	\item AVM package (the one in this folder%
+	%
+	\footnote{There are many different versions of the package avm on the internet. They have different settings but the same name. So if you are using a different avm package, it could be the case, that you get some errors.}%
+	%
+	)):
+	
+		\verb|\usepackage{avm}|
+	
+\end{itemize}
+
+
+If the settings (e.g. \texttt{forestset} or \texttt{tikzset}) are used outside of the forest or tikz-picture environment (see the code in the tex-file of this document) then they apply globally, i.e.\ for all following trees. If they are only used inside of an environment (i.e. after \verb|\begin{forest}| or \verb|\begin{tikzpicture}|), their effect only lasts until the environment is closed again (see code below).
+
+For further information on \LaTeX , forest, TikZ, and tipa, see \citet{Freitag&MyP15a,VandenWyngaerd16a,Zivanovic17a,Cremer11a,Tantau13a,Rei04a}. 
+
+This file has been compiled with PDF-\LaTeX .
+
+
+%\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\section{AVM}
+
+\subsection{Two examples with different commands}
+
+First example (see code):
+\vspace{-1cm}
+\begin{center}
+	\begin{avm}
+\avml
+
+\avml \\
+	\[{}subcat \< \avml \hfil NP \hfil \\[-1ex] 
+	\[{}case&nom\\
+	ind&\@1\]
+\avmr, 
+\avml 
+	\hfil NP \hfil \\[-1ex] 
+	\[{}case&acc\\
+	ind&\@2\] 
+\avmr \>\] 
+\avmr
+\raisebox{-.25cm}{$\Longrightarrow$}
+\avml \\ 
+	\[{}subcat \<\avml \hfil NP \hfil \\[-1ex] 
+	\[{}case&nom\\
+	ind&\@3\] 
+\avmr, 
+\avml 
+	\hfil NP \hfil \\[-1ex] 
+	\[{}case&dat
+	\\ind&\@1\] 
+\avmr, 
+\avml 
+	\hfil NP \hfil \\[-1ex] 
+	\[{}case&acc\\ind&\@2\] 
+\avmr \>\] 
+\avmr 
+
+\avmr 
+\end{avm}
+\end{center}
+
+\bigskip
+
+\noindent Second example (see code):
+\vspace{-.5cm}
+\begin{center}
+	\begin{avm}
+		\[subcat \< 
+			\avml
+				\hfil NP \hfil \\[-1ex] 
+				\[case&nom\\
+				ind&\@1\]
+			\avmr, 
+			\avml 
+				\hfil NP \hfil \\[-1ex] 
+				\[case&acc\\
+				ind&\@2\] 
+			\avmr \>
+		\] 
+$\Longrightarrow$ 
+		\[subcat \<
+			\avml 
+				\hfil NP \hfil \\[-1ex] 
+				\[case&nom\\
+				ind&\@3\] 
+			\avmr, 
+			\avml 
+				\hfil NP \hfil \\[-1ex] 
+				\[case&dat\\
+				ind&\@1\] 
+			\avmr, 
+			\avml 
+				\hfil NP \hfil \\[-1ex] 
+				\[case&acc\\
+				ind&\@2\] 
+			\avmr \>
+		\]
+\end{avm}
+\end{center}
+
+
+\subsection{Lexical Rule}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN Figure 
+\begin{figure}[htbp]
+	\begin{avm}
+		\scriptsize
+		\[cont$|$rels 
+		\@{8}
+		\, $\oplus$ 
+		\tpv{nelist}
+		\\
+		\tpv{alt-psych-v-lxm}							
+		\]
+	\end{avm}
+	%	
+	\begin{minipage}[t][][t]{.03\textwidth}
+		\vspace{.05cm}
+		$\mapsto$
+	\end{minipage}
+	%	
+	\flushright	
+	%	
+	\begin{avm}
+		\scriptsize
+		\[cat$|$arg-st \< NP{[\tpv{str}]}$_{\@{5}}$ , NP{[\tpv{str}]}$_{\@{1}}$\>\\
+		%%
+		cont
+		\[
+		ind \@{4}\\
+		%%
+		rels 
+		\@{8}
+		\<
+		\[ 
+		arg0 \@{0}\\
+		\tpv{pred}
+		\] 
+		{,}
+		\[ 
+		arg0 \@{1} \\
+		\tpv{exp}
+		\]
+		\>\, $\oplus$ 
+		\<  
+		\[
+		arg0 \@{4} \tpv{hpng}\\
+		arg1 \@{0}\\
+		\tpv{begin-pred}
+		\]{,}
+		\[ 
+		arg0 \@{5} \\
+		arg1 \@{4}\\
+		\tpv{csr}
+		\]
+		\> 
+		\]\\
+		\tpv{cause-psych-v-lxm}		    
+		\]
+	\end{avm}
+	
+	\caption{LR for case alternation for \emph{alt-psych-v-lxm} \citep{MyP&Co18a}}
+	\label{fig:LRSpa}
+\end{figure}
+
+%% END Figure 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage 
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forest-Tree with AVM}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\scalebox{.95}{\begin{forest}
+		[N$'_{ii}$\\
+		\begin{avm}
+			\begin{scriptsize}
+				\[cont & 
+				\[
+				ind \@{1}
+				\[per  & 3 \\
+				num  & sg \\
+				gend & masc
+				\]\\
+				rels 
+				\< \@{3}{,} \@{7}{,} \@{4}{,} \@{5} \> \\
+				\tpv{mrs}
+				\]\\
+				\tp{head-complement-structure}		
+				\]		
+			\end{scriptsize}
+		\end{avm} 
+		[N$^{0}_{ii}$\\ 
+		\begin{avm}
+			\begin{scriptsize}
+				\[
+				cont & 
+				\[ind \@{1}
+				\[per  & 3 \\
+				num  & sg \\
+				gend & masc
+				\]\\
+				rels 
+				\<
+				\@{3}
+				\[inst \@{1} \\
+				result \@{6} \\
+				\tpv{win\_result}
+				\]{,}
+				\@{7}
+				\[event \@{6} \\
+				th \@{2} \\
+				\tpv{win}
+				\]
+				\> \\
+				\tpv{mrs}
+				\]\\
+				\tp{word}	
+				\]		
+			\end{scriptsize}
+		\end{avm} 
+		[Gewinn \\ win]]
+		[NP$_{i}$\\ 
+		\begin{avm}
+			\begin{scriptsize}
+				\[cont &
+				\[
+				ind \@{2}
+				\[per  & 3 \\
+				num  & sg \\
+				gend & fem
+				\]\\
+				rels 
+				\< 
+				\@{4}
+				\[arg \@{2}\\
+				\tpv{def}
+				\]{,} 
+				\@{5}
+				\[inst \@{2} \\
+				\tpv{world\_}\\
+				\tpv{championship}
+				\] 
+				\> \\
+				\tpv{mrs}
+				\]\\
+				\tp{head-specifier-structure}		
+				\]			
+			\end{scriptsize}
+		\end{avm}
+		[der WM \\ of the World Championship]]
+		]	
+		]
+	\end{forest} }
+	\caption{Illustration of the Semantics Principle \citep{MyP17e}}
+	\label{fig:SemP1}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Forest-Trees (Basics)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Simple small tree with bar over X, no bottom alignment}
+
+\begin{center}
+\begin{forest}
+[CP
+	[DP$_2$
+		[$\overline{\mbox{D}}$
+			[D$^0$
+				[sie]
+			]
+		]
+	]	
+	[$\overline{\mbox{C}}$
+		[C$^0$
+			[besucht$_1$]
+		]
+		[IP
+			[$t_2$]
+			[$\overline{\mbox{I}}$
+				[VP
+					[$\overline{\mbox{V}}$
+						[DP
+							[$\overline{\mbox{D}}$
+								[D$^0$
+									[ihn]
+								]
+							]
+						]
+						[V$^0$
+							[$t_1$]
+						]
+					]
+				]
+				[I$^0$
+					[$t_1$]
+				]
+			]
+		]
+	]
+]
+\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Trinary branching, prime instead of bar, bottom alignment}
+
+\begin{center}
+	\begin{forest}
+		bottom word
+		[VP
+			[DP [John]]
+			[V$'$
+				[V [sent]]
+				[DP [Mary]]
+				[DP
+					[D[a]]
+					[NP[letter]]
+				]
+			]
+		]
+	\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bottom alignment, roof, traces}
+
+\begin{figure}[h!]
+\centering	
+\begin{forest}
+bottom word
+[CP
+[C$'$
+	[C$^0$[{[kenn-$_{\tiny j}$ -t]}$_{\tiny k}$]]
+	[IP
+		[NP[jeder]]
+		[I$'$
+			[VP
+				[V$'$
+					[NP[diesen Mann ,roof]]
+					[V$^0$[\_$_{\tiny j}$]]]]
+			[I$^0$[\_$_{\tiny k}$]]]]]]
+\end{forest}
+\caption{CP Structure in \citet[107]{MuellerS19a}}
+\end{figure}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bottom alignment with \texttt{tier=word} and empty nodes}
+
+The command \texttt{, tier=word} aligns every node with this command to the lowest node that has the command.
+
+\begin{center}
+	\begin{forest}
+		empty nodes
+		[{CP}
+		[{}[{AdvP} ,tier=word [{heute} ,roof]]]
+		[{C$'$}
+		[{}[{C$^0$} ,tier=word [{kauft$_1$}]]]
+		[{IP}
+		[{}[{DP} ,tier=word [{Peter} ,roof]]]
+		[{I$'$}
+		[{VP}
+		[{DP} ,tier=word [{einen Wagen} ,roof]]
+		[{V$^0$} ,tier=word [{$t_1$}]]]
+		[{}[{I$^0$} ,tier=word [{$t_1$}]]]]]]]
+	\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Big tree -- resized, with phantom nodes}
+
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{forest}
+	bottom word
+[CP
+	[C$^0$[weil]]
+	[TopP
+		[DP$_{\tiny j}$[diese Sonate]]
+		[SubjP
+			[DP$_{\tiny i}$[der Mann]]
+			[ModP
+				[AdvP[wahrscheinlich]]
+				[ObjP
+					[DP$_{\tiny j}$[diese Sonate]]
+					[NegP
+						[AdvP[nicht]]
+						[AspP
+							[AdvP[oft]]
+							[MannP
+								[AdvP[gut]]
+								[AuxP
+									[VP$_{\tiny k}$[gespielt]]
+									[Aux+
+										[Aux[hat]]
+										[vP
+											[DP$_{\tiny i}$
+												[,phantom]]
+											[VP$_{\tiny k}$
+												[V
+													[,phantom]]
+												[DP$_{\tiny j}$
+													[,phantom]]]]]]]]]]]]]]
+\end{forest}%
+}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Two trees and arrow}
+
+\begin{center}
+	\begin{forest}
+		[S, for tree={parent anchor=south, child anchor=north}
+		[NP [John] ]
+		[VP
+		[V [loves] ]
+		[NP [Mary] ] 
+		]]
+	\end{forest}
+\qquad  \raisebox{-2cm}{$\rightsquigarrow$}  \qquad
+	\begin{forest}
+		[S, for tree={parent anchor=south, child anchor=north}
+		[NP[Mary]]
+		[VP
+		[Aux[is, tier=word]]
+		[V[loved, tier=word]]
+		[PP
+		[P[by, tier=word]]
+		[NP[John, tier=word]]]]]
+	\end{forest}
+\captionof{figure}{Transformation \citep[149, 85]{MuellerS19a}}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Node with circle}
+
+\begin{center}
+\begin{forest} 
+[VP,circle,draw
+	[DP]
+	[V$'$ [V]
+		[DP]]
+]
+\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Two nodes marked with ellipse}
+
+Change the parameters in \texttt{node} to fit the nodes inside the ellipse.
+
+\begin{center}
+	\begin{forest} 
+		[VP,
+		[DP, name=DP]
+		[V$'$ 
+			[V, name=V
+			]
+		[DP]]
+		]{
+			\node[ellipse, draw=blue, rotate=26, fit=(DP) (V), scale=0.67, inner sep=1.5pt, yshift=0.1cm, xshift=0cm, ] {};
+		}
+	\end{forest}
+\end{center}
+
+
+\noindent Code taken from: \href{https://tex.stackexchange.com/questions/355365/drawing-an-ellipse-around-an-edge-in-forest}{https://tex.stackexchange.com/questions/355365/drawing-an-ellipse-around-an-edge-in-forest}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Coloured rectangle}
+
+\begin{center}
+\begin{forest}
+[CP
+	[DP$_1$]
+	[\dots
+		[,phantom]
+		[VP,tikz={\node [draw,red,fit=()] {};}
+			[DP$_2$]
+			[V'
+				[V]
+			[DP$_3$]
+]]]]
+\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forest-Trees with edges and crossing edges}
+
+
+%% Needs options "linguistics" and "edges"
+%% \usepackage[linguistics,edges]{forest}
+\begin{centering}
+
+\begin{forest}
+	for tree={grow=south,delay={where content={}{shape=coordinate}{}}}, 
+	forked edges, l sep=2em
+	[S,s sep=1cm
+	[Kn, l sep=2em
+	[Er]
+	]
+	[V, l sep=2em
+	[sieht]
+	[ihn, name=ihn, edge=white]
+	[an]
+	]
+	[Kn, name=kn, l sep=2em
+	[, edge=white]
+	]
+	]{
+		\draw[,-] (kn.south)--(ihn.north);
+	}
+\end{forest}
+
+\end{centering}
+
+
+\bigskip
+\noindent Lengthening the edges:
+
+\begin{centering}
+	
+\begin{forest}
+	for tree={grow=south,delay={where content={}{shape=coordinate}{}}}, 
+	forked edges
+[S, before drawing tree={x-=3mm},
+	[Kn, before drawing tree={y-=13mm},
+		[Er, l+=13mm, tier=word]
+	]
+	[V
+		[sieht, tier=word]
+		[an, before drawing tree={x+=18mm}, tier=word]
+	]
+	[Kn, before drawing tree={y-=13mm},
+		[ihn, tier=word]
+	]
+]
+\end{forest}
+
+\end{centering}
+
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Forest-Trees with arrows}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Movement and advice, with phantom node}
+
+\begin{center}
+	\begin{forest}
+		[CP
+		[DP,name=spec CP]
+		[\dots
+		[,phantom]
+		[VP
+		[DP]
+		[V'
+		[V]
+		[DP,draw] {
+			\draw[->,dotted] () to[out=south west,in=south] (spec CP);
+			\draw[<-,red] (.south east)--++(0em,-4ex)--++(-2em,0pt)
+			node[anchor=east,align=center]{This guy\\has moved!};
+		}
+		]]]]
+	\end{forest}
+\captionof{figure}{CP with arrows \citep[6, 8]{Zivanovic17a}}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{With different arrows}
+
+%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	
+	\begin{minipage}[c][][c]{.33\textwidth}
+		\centering
+		\begin{forest}
+			[X\\phrase ,name=Phrase
+			[Z\\argument ,name=Argument]
+			[Y\\head ,name=Head]
+			]
+			\draw[->,dotted] (Argument) to[out=north,in=north] (Head);
+			\draw[->] (Head) to[out=south,in=south] (Argument);
+			\draw[->,dashed] (Head) to[out=east,in=east] (Phrase);
+		\end{forest}\hspace{1cm}
+	\end{minipage}
+	%%
+	\begin{minipage}[c][][c]{.01\textwidth}
+		~
+	\end{minipage}
+	%%
+	\begin{minipage}[c][][c]{.62\textwidth}
+		\centering
+		\begin{tabular}[b]{ll}
+			\tikz[baseline]\draw[dashed](0,1ex)--(1,1ex); & HFP , ValP \& SemP (\textsc{ind})\\
+			\tikz[baseline]\draw(0,1ex)--(1,1ex); & selection through \textsc{val} (\textsc{subj}, \textsc{comps})\\
+			\tikz[baseline]\draw[dotted](0,1ex)--(1,1ex); & incorporation of the value of \textsc{ind} into \textsc{rels}\\
+		\end{tabular}
+	\end{minipage}
+	\caption{Head-argument relation \citep{MyP17e}}
+	\label{fig:Tree-Arg2}
+\end{figure}
+%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}{.35\textwidth}
+		\centering
+		\begin{forest}
+			[X\\phrase ,name=Phrase
+			[W\\adjunct ,name=Adjunct]
+			[Y\\head ,name=Head]
+			]
+			\draw[->,dotted] (Head) to[out=north,in=north] (Adjunct);
+			\draw[->] (Adjunct) to[out=south,in=south] (Head);
+			\draw[->,dashed] (Head) to[out=east,in=east] (Phrase);
+			\draw[->,dashed,ultra thick] (Adjunct) to[out=west,in=west] (Phrase);
+		\end{forest}\hspace{1cm}
+	\end{minipage}
+	%%
+	\begin{minipage}{.02\textwidth}
+		~
+	\end{minipage}
+	%%
+	\begin{minipage}{.51\textwidth}
+		\centering
+		\begin{tabular}[b]{ll}
+			\tikz[baseline]\draw[dashed](0,1ex)--(1,1ex); & HFP \& ValP \\
+			
+			\tikz[baseline]\draw[dashed,ultra thick](0,1ex)--(1,1ex); & SemP (\textsc{cont})\\
+			
+			\tikz[baseline]\draw(0,1ex)--(1,1ex); & selection through \textsc{mod}\\
+			
+			\tikz[baseline]\draw[dotted](0,1ex)--(1,1ex); & incorporation of the value of \textsc{cont}\\
+		\end{tabular}
+		
+	\end{minipage}
+	\caption{Head-adjunct relation \citep{MyP17e}}
+	\label{fig:Tree-Adj2}
+	
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{center}
+\begin{forest}
+	[NP, name=N2
+	[\textsc{Det} [die]]
+	[N$'$, name=N1
+	[N$^0$, name=N0 [Behandlung]]
+	[NP [des Patienten, roof]]
+	]
+	]{
+		\draw[->,dashed] (N0) to[out=west,in=west] (N1);
+		\draw[->,dashed] (N1) to[out=east,in=east] (N2);
+	}
+\end{forest}
+\captionof{figure}{Projection of head features \citep{MyP18b}}\label{Abb3}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tree with different arrows and coloured boxes}
+
+\begin{center}
+
+\begin{forest}
+	[CP, fill=yellow,draw,circle,
+	[DP$_{1}$, draw=red, name=T12
+	[D$'$
+	[D$^0$ [$\emptyset$]]
+	[NP [Syntaktiker, roof]]
+	] 
+	]
+	[C$^{\prime}$
+	[C$^{0}$ [zeichnen$_{2}$, draw=blue, name=C0]]
+	[TP, fill=yellow,draw,circle, [$t_{1}$, draw=red, name=T11]
+	[T$^{\prime}$
+	[VP, fill=red 
+	[V$^{\prime}$ [DP [Bäume,roof]]
+	[V$^{0}$ [$t_{2}$, draw=blue, name=V0]]]]
+	[T$^{0}$ [$t_{2}$, draw=blue, name=T0]]]]]
+	]
+	\draw[->] (V0) to[out=east, in=east](T0);
+%		\draw[->] (T0) to[out=south east, in=west](C0);
+%		\draw[->] (T11) to[out=south west, in=west](T12);
+\end{forest}
+
+\end{center}
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Forest-Trees with adjusted roofs for glosses and bottom alignment}
+
+Taken from: \url{http://tex.stackexchange.com/questions/167978/smaller-roofs-for-forest}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The default behaviour}
+
+\begin{center}
+\begin{forest}
+bottom word
+[NP
+  [Det [das\\the] ]
+  [N$'$,s sep=20pt
+    [N$'$,s sep=15pt
+      [N [Bild\\picture] ]
+      [PP [vom Gleimtunnel\\ of.the Gleimtunnel,roof ] ] ] 
+    [PP [im Gropiusbau\\ in.the Gropiusbau,roof ] ] ] ]
+\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hiding the wider text}
+
+\newcommand{\HideWd}[1]{%
+	\makebox[0pt]{#1}%
+}
+%%%%%%%%%%%%%
+
+\begin{center}
+\begin{forest}
+bottom word
+[NP
+  [Det [das\\the] ]
+  [N$'$
+    [N$'$
+      [N [Bild\\picture] ]
+      [PP [vom Gleimtunnel\\ \HideWd{of.the Gleimtunnel},roof ] ] ] 
+    [PP [im Gropiusbau\\ \HideWd{in.the Gropiusbau},roof ] ] ] ]
+\end{forest}
+\end{center}
+
+
+\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tree with arrows avoiding nodes (with corrections)}
+
+\begin{center}
+
+\begin{forest}
+[CP
+	[C$'$
+		[C$^0$ [sah$_1$, name=verb2]]
+		[IP
+			[DP$_3$, name=object [den Mann, roof]]
+			[IP
+				[DP$_2$, name=subject 
+					[die Frau,roof]
+				]
+				%%
+				[I$'$
+					[VP
+						[$t_2$, name=bsubject]
+						[V$'$
+							[$t_3$, name=bobject]
+								[V$^0$ [$t_1$,name=bverb]]
+						]
+					]
+					[I$^0$ , [$t_1$, name=verb1]]
+				]
+			]
+		]
+	]
+]	
+%\draw[->,dotted] (bsubject) to[out=west, in=west] (subject);
+\draw[->,dashed] (bsubject.west) .. controls (-0.6,-7) and (0,-5.5) .. (subject.west);
+\draw[->,dashed] (bobject.west) .. controls (-1,-8) and (-2.7,-5.3) ..  (object.west);
+\draw[->,dashed] (bverb) to[out=east, in=east] ($(verb1)-(-0.2,.1)$);
+\draw[->,dashed] ($(verb1.east)+(0,.1)$) .. controls (9.5,-11) and (-7,-13) ..  (verb2.west);
+\end{forest}
+
+\end{center}
+
+\noindent Check also:\\ \href{https://tex.stackexchange.com/questions/352873/drawing-lines-or-arrows-along-node-pathes-with-forest/353341\#353341}{https://tex.stackexchange.com/questions/352873/drawing-lines-or-arrows-along-node-pathes-with-forest/353341\#353341}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hiding the wider text and correcting the separation}
+
+\begin{center}
+\begin{forest}
+bottom word
+[NP
+  [Det [das\\the] ]
+  [N$'$,s sep=20pt
+    [N$'$,s sep=15pt
+      [N [Bild\\picture] ]
+      [PP [vom Gleimtunnel\\ \HideWd{of.the Gleimtunnel},roof ] ] ] 
+    [PP [im Gropiusbau\\ \HideWd{in.the Gropiusbau},roof ] ] ] ]
+\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Some other trees for linguistics}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Language architecture}
+
+This tree uses the forest styles \texttt{bottom word} and \texttt{edgy} defined in the preamble of this document.
+
+\begin{center}
+\begin{forest}
+bottom word, edgy,
+[D-structure
+  [S-structure, edge label={node[midway,right]{\hspace{5mm}move-$\alpha$}}
+  	[Deletion rules{,}\\Filter{,} phonol. rules
+		[Phonetic\\Form (PF)]]
+	[Anaphoric rules{,}\\rules of quantification and control
+		[Logical\\Form (LF)]]]]
+\end{forest}
+\captionof{figure}{T-Modell \citep[88]{MuellerS19a}}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{Structures of complex words}
+
+\begin{center}
+	
+\scalebox{.8}{
+	\begin{forest}
+		[N, name=N1
+			[N, name=N2
+				[N, name=N3
+					[A [Laut] ]
+				[N, name=N4
+					[V [sprech] ]
+					[N\textsuperscript{af} [er] ]
+				]
+			]
+			[N, name=N5
+				[V, name=V1
+					[Part [an] ]
+					[V [weis] ]
+				]
+				[N\textsuperscript{af} [ung] ]
+			]
+		]
+		[Fl [en] ]
+		]
+		{
+			\draw[<-] (N1.west)--++(180:12.6em)
+			node[anchor=east,align=center]{Flexion (KEIN Wortbildungsporzess)};
+			\draw[<-] (N2.west)--++(180:8.9em)
+			node[anchor=east,align=center]{Determinativkompositum};
+			\draw[<-] (N3.west)--+(180:3.8em)
+			node[anchor=east,align=center]{Determinativkompositum};
+			\draw[<-] (N4.west)--+(-2em,0pt)--++(-2em,-1.5ex)--++(-4em,0pt)
+			node[anchor=east,align=center]{Derivation(ssuffigierung)};
+			\draw[<-] (N5.east)--++(0.5em,0pt)--++(0em,-3ex)--++(2em,0pt)
+			node[anchor=west,align=center]{Derivation(ssuffigierung)};
+			\draw[<-] (V1.east)--++(1.9em,0pt)--++(0em,-12ex)--++(2.5em,0pt)
+			node[anchor=west,align=center]{Partikelverbbildung};
+		}	
+	\end{forest}
+}
+\captionof{figure}{Word structure \citep{MyP19a}}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Structures of syllables}
+
+\begin{center}
+	\begin{forest}
+	[,phantom
+		[$\sigma$
+			[O
+				[x, tier=word
+					[\textipa{l}]
+				]
+			]
+			[R
+				[N
+					[x, tier=word
+						[\textipa{\t{aU}}, name=aU]
+					]
+					[x, name=x]
+				]  		
+				[K 
+					[x
+						[\textipa{t}]
+					]
+				]
+			]
+		]
+		[$\sigma$
+			[O
+				[x, tier=word
+					[\textipa{S}]
+				]
+				[x, tier=word
+					[\textipa{p}]
+				]
+				[x, tier=word
+					[\textscr ]
+				]
+			]
+			[R
+				[N
+					[x
+						[\textipa{E}]
+					]
+				]
+				[K
+					[x, name=xc
+						[\textipa{\c{c}}]
+					]
+				]
+			]
+		]
+		[$\sigma$
+			[O, name=O]
+			[R
+				[N
+					[x
+						[\textipa{5}]
+					]
+				]
+				[K]
+			]
+		]
+	]
+\draw[black] (aU.north)--(x.south);
+\draw[black] (O.south)--(xc.north);
+	\end{forest}
+
+\captionof{figure}{Phonetic structure \citep{MyP19a}}
+\end{center}
+
+
+\clearpage
+
+
+The following style can be obtained using the forestset ``GP1'' which is already provided by the linguistics option of \texttt{forest}.
+
+\begin{center}
+	\begin{forest} GP1 
+	[,phantom
+		[$\sigma$
+			[O
+				[x, tier=word [\textipa{l}]]]
+			[R
+				[N
+					[x, tier=word [\textipa{\t{aU}}, name=aU]]
+					[x, name=x]]  		
+				[K 
+					[x	[\textipa{t}]]]
+			]
+		]
+		[$\sigma$
+			[O
+				[x, tier=word [\textipa{S}]]
+				[x, tier=word [\textipa{p}]]
+				[x, tier=word [\textscr ]]]
+			[R
+				[N
+					[x [\textipa{E}]]
+				]
+				[K [x, name=xc [\textipa{\c{c}}]]
+				]
+			]
+		]
+		[$\sigma$
+			[O, name=O]
+			[R
+				[N
+					[x [\textipa{5}]]
+				]
+				[K]
+			]
+		]
+	]
+	\draw[black] (aU.north)--(x.south);
+	\draw[black] (O.south)--(xc.north);
+	\end{forest}
+\captionof{figure}{Phonetic structure \citep{MyP19a}}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sonority Profiles with TikZ}
+
+
+\begin{center}
+
+	\begin{tikzpicture}[scale=0.5]
+	\draw[black] (-1,0) -- (6.5,0) ; % x axis
+	\draw[black] (-1,0) -- (-1,6.5); % y axis
+	\node at (-2,1) {Plos.};
+	\node at (-2,2) {Fric.};
+	\node at (-2,3) {Nas.};
+	\node at (-2,4) {\textipa{/l/}};
+	\node at (-2,5) {\textipa{/\textscr /}};
+	\node at (-2,6) {Vow.};
+	\draw[black] (0,2) -- (1,1) -- (2,5) -- (3,6) -- (4,2) -- (5,6) -- (6,3);
+	\node at (0,-1) {\strut \textipa{S}};
+	\node at (1,-1) {\strut \textipa{p}};
+	\node at (2,-1) {\strut \textipa{\textscr}};
+	\node at (3,-1) {\strut \textipa{E}};
+	\node at (4,-1) {\strut \textipa{\c{c}}};
+	\node at (5,-1) {\strut \textipa{@}};
+	\node at (6,-1) {\strut \textipa{n}};
+	\fill (0,2) circle [radius=3pt];
+	\fill (1,1) circle [radius=3pt];
+	\fill (2,5) circle [radius=3pt];
+	\fill (3,6) circle [radius=3pt];
+	\fill (4,2) circle [radius=3pt];
+	\fill (5,6) circle [radius=3pt];
+	\fill (6,3) circle [radius=3pt];
+	\end{tikzpicture}
+
+\captionof{figure}{Sonority profile \citep{MyP19a}}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tikz-tree: Typology}
+
+\begin{center}
+\begin{tikzpicture}
+%%%%%%%%%%%%%
+%%% Tikz set
+\tikzset{edge from parent/.style={draw,edge from parent path={(\tikzparentnode.south)-- +(0,-8pt)-| (\tikzchildnode)}}}
+
+\Tree [.ZZ
+ [.Bax
+ [.X
+ [.Y [.A ] [.B ] ]
+ [.Z [.C ] [.D ] ] ]
+ [.F
+ [.M [.E ] [.F ] ]
+ [.G [.G ] [.H ] ] ] ]
+ [.A
+ [.B
+ [.S  [.I P R T V U ] [.J ] ]
+ [.I  [.K ] [.L ] ] ]
+ [.M
+ [.L  [.M ] [.N ] ]
+ [.A  [.O ] [.P ] ] ] ] ] ]
+\end{tikzpicture}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forest-tree: Typology}
+
+\begin{center}
+ \begin{forest}
+[ZZ
+	[Bax
+		[X
+			[Y [A] [B] ]
+			[Z [C] [D] ] ]
+		[F
+			[M [E] [F] ]
+			[G [G] [H] ] ] ]
+		[A
+			[B
+				[S  [I [P][R][T][V][U]] [J] ]
+				[I  [K] [L] ] ]
+			[M
+				[L  [M] [N] ]
+				[A  [O] [P] ] ] ] ]
+ \end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forest Sets: rectangles}
+
+
+
+%%%%%%%%%%%%%
+\begin{center}
+	
+\pgfkeys{/pgf/inner sep=0.6666em}
+\begin{forest}
+sn edges,
+[Set 3,draw 
+	[Set 1,draw 
+		[German]
+		]
+	[Set 2,draw 
+		[Dutch]]
+]{\draw[black] (.west) node[anchor=east,align=center]{ArgStr\\SOV\\V2\\VC};}
+\end{forest}
+
+\end{center}
+
+
+
+
+%%%%%%%%%%%%%
+\begin{center}
+	
+\pgfkeys{/pgf/inner sep=0.6666em}
+\begin{forest}
+sn edges,
+[Set 5,draw
+[Set 4,draw 
+	[Set 1,draw 
+		[German]]
+	[Set 2,draw 
+		[Dutch]]
+]{\draw[black] (.west)
+node[anchor=east,align=center]{SOV\\VC};}
+[Set 6,draw
+	[Danish]]]
+{\draw[black] (.west)
+node[anchor=east,align=center]{ArgStr\\V2};}
+\end{forest}
+\end{center}
+%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%
+\begin{center}
+\pgfkeys{/pgf/inner sep=0.6666em}
+\begin{forest}
+sn edges,
+[Set 8,draw
+	[Set 7,draw
+		[Set 4,draw 
+			[Set 1,draw 
+				[German]]
+			[Set 2,draw 
+				[Dutch]]
+		]{\draw[black] (.west)
+node[anchor=east,align=center]{SOV\\VC};}
+		[Set 6,draw
+			[Danish]]
+	]{\draw[black] (.west)
+node[anchor=east,align=center]{V2};}
+	[Set 11,draw
+		[Set 12,draw
+			[English]]
+		[Set 13,draw
+			[French]]]{\draw[black] (.east)
+node[anchor=west,align=center]{SVO};
+\draw[black] (.south)--++(-7.9em,-3.5ex);}
+]
+{\draw[black] (.west)
+node[anchor=east,align=center]{Arg Str};}
+\end{forest}
+
+\end{center}
+%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forest Sets: rounded corners and labels}
+
+
+\begin{center}
+\begin{forest}
+	for tree={rounded corners=3mm, inner ysep=.6mm,
+		very thick,draw=black!50,
+		top color=white,bottom color=black!20,
+		font=\ttfamily, l=2cm,s sep=1cm}
+	[{ ~Set 7 ~ }
+	[{ ~Set 4 ~ },name=Set4
+	[{ ~Set 1 ~ },name=Set1
+	%			[German,no edge]
+	]
+	%		[{ ~Set 2 ~ },name=Set2,tier=word]
+	]
+	[{ ~Set 5 ~ },name=Set5
+	[{ ~Set 2 ~ },name=Set2,tier=word,no edge]
+	]
+	[{ ~Set 6 ~ },name=Set6]
+	[{ ~Set 3 ~ },name=Set3,tier=word]
+	]{
+		\draw[] (Set1.south)++(270:1.5em)
+		node[anchor=south,align=center]{German};
+		%	
+		\draw[] (Set2.south)++(270:1.7em)
+		node[anchor=south,align=center]{Spanish};
+		%
+		\draw[] (Set3.south)++(270:1.5em)
+		node[anchor=south,align=center]{Korean};
+		%
+		\draw[black] (Set5.south)--(Set1.north);
+		\draw[black] (Set5.south)--(Set3.north);
+		\draw[black] (Set6.south)--(Set2.north);
+		\draw[black] (Set6.south)--(Set3.north);
+		\draw[black] (Set4.south)--(Set2.north);
+		%\node [below=of Set1] (g){\color{white}G};
+		%\node [above of=g] {German};
+		%\node [below=of Set2] (s){\color{white}S};
+		%\node [above of=s] {Spanish};
+		%\node [below=of Set3] (k){\color{white}K};
+		%\node [above of=k] {Korean};
+		%\node [left=of Set8] {\begin{tabular}{@{}c@{}}Arg St\\V2\\SOV\\VC\end{tabular}};
+	}
+\end{forest}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tikz Flowchart}
+
+\begin{tikzpicture}
+	
+	\node[draw, thick,
+	minimum width=2cm,
+	minimum height=1.5cm] at (0,0) (Block 1) {myDocument.tex};
+	
+	\node [below=of Block 1] (write1) {write};
+	
+	\node[draw, thick,
+	minimum width=2cm, 
+	minimum height=1.5cm] at (6.5,-2) (Block 2) {myDocument.aux};
+	
+	\node [above=of Block 2] (write2) {write};
+	
+	\node [left=of Block 2] (read) {read}; 
+	
+	\node[draw, thick,
+	minimum width=2cm, 
+	minimum height=1.5cm] at (10.2,-2) (Block 3) {myDocument.log};
+	
+	\node[draw, thick,
+	minimum width=2cm, 
+	minimum height=1.5cm] at (0,-4) (Block 4) {myDocument.pdf};
+	
+	\draw[-stealth,thick] (Block 1) -- (write1);
+	\draw[-stealth,thick] (write1) -- (Block 4);
+	\draw[-stealth,thick] (Block 1) -- (write2);
+	\draw[-stealth,thick] (write2) -- (Block 2);
+	\draw[-stealth,thick] (Block 2) -- (read);
+	\draw[-stealth,thick] (read) -- (write1);
+	\draw[-stealth,thick] (write2) -| (Block 3);
+
+\end{tikzpicture}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tikz-qtree Sets}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+%%%%%%%%%%%%%
+%%% Tikz Set
+    \tikzset{level 1+/.style={level distance=5\baselineskip}}%
+    \tikzset{sibling distance=18pt}
+    \tikzset{every tree node/.style={
+                          %  The shape:
+                          rectangle,minimum size=6mm,rounded corners=3mm,
+                          %  The rest
+                          very thick,draw=black!50,
+                          top color=white,bottom color=black!20,
+                          font=\ttfamily},node distance=2mm}
+%%%%%%%%%%%%%
+    \Tree[.\node (Set3) { ~Set 3~ };
+                  \node (Set1) { ~Set 1~ }; \node (Set2) { ~Set 2~ }; ]  
+
+    \node [below=of Set1] {German}; \node [below=of Set2] {Dutch}; 
+
+     \node [left=of Set3] {\begin{tabular}{@{}c@{}}Arg St\\V2\\SOV\\VC\end{tabular}};
+
+\end{tikzpicture}
+\caption{\label{fig-german-dutch}Common properties in German \& Dutch \citep{MuellerS14a}}
+\end{figure}
+
+
+
+%\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Type hierarchy, multiple inheritance, and scalebox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN Figure 
+\begin{figure}[h!]
+	\centering
+\scalebox{.7}{
+	\begin{forest}
+		[\emph{sem-rels}
+		[\emph{$\theta$-role}
+		[\emph{proto-agent}
+		[\emph{agent}, name=ag
+		[\emph{pure}\\ \emph{agent}]
+		]
+		[\emph{causer}, name=csr
+		[\emph{agentive} \\ \emph{causer}, name=agcsr]
+		[\emph{pure} \\ \emph{causer}]
+		]
+		[\textbf{\emph{stimulus}}
+		[\textbf{\emph{stimulus-}}\\ \textbf{\emph{causer}}, name=stcsr]	
+		[\textbf{\emph{subject}}\\ \textbf{\emph{matter}}]
+		[\textbf{\emph{target}}]				
+		]
+		]
+		[\emph{proto-patient}
+		[\textbf{\emph{experiencer}}]
+		[\emph{patient}]
+		]	
+		]
+		[\emph{pred}
+		[$kick$]
+		[$love$]
+		[\dots ]
+		]
+		[\dots ]
+		]{
+			\draw[black] (csr.south)--(stcsr.north);
+			\draw[black] (ag.south)--(agcsr.north);
+		}	
+	\end{forest}	
+}	
+	\caption{Type hierarchy for \emph{semantic-relations} \citep{MyP&Co18a}}	
+	\label{fig:SemRels}
+\end{figure}
+%% END Figure 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\clearpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%                References                    
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+\phantomsection	%this allows hyperlink in ToC to work
+
+\addcontentsline{toc}{section}{References}
+
+\bibliographystyle{enChicagoMyP}	
+
+\bibliography{bibfile}
+
+\end{document}
