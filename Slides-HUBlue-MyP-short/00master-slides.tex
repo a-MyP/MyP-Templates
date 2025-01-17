@@ -1,0 +1,116 @@
+% !TEX TS-program = pdflatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE_frami
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Compile: PDFLaTeX BibTeX PDFLaTeX PDFLaTeX
+%% Template: Beamer HUblue Style - F. Bildhauer & A. Machicao y Priemer
+%% Slides: Title of Course or Presentation 
+%% Author: Antonio Machicao y Priemer 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% for Slides:
+\documentclass[a4paper,10pt, bibtotoc]{beamer}
+
+%%% for Handout:
+%\documentclass[a4paper,10pt,handout]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGES & COMMANDS  
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{01packages-slides}  %% All packages and options are here
+
+\input{01commands-slides}  %% All own commands are here
+
+\input{01metadata-slides}  %% Metadata & hyphenation are here
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINITION FOR APPENDIX %% for HUBlue Style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\backupbegin}{
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\setcounter{framenumber}{\value{finalframe}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Preamble's End
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	
+\input{02text-slides}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          APPENDIX (use toggle)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\backupbegin
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quellen}
+
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Quellen}
+	%%\frametitle{Internet sources}
+	
+	{%\tiny
+		\scriptsize
+	%	\footnotesize
+		\begin{itemize}
+			
+			\input{03sources}
+			
+		\end{itemize}
+	}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Literatur}
+
+
+\begin{frame}[allowframebreaks]
+\frametitle{Literatur}
+
+%%	%German
+\bibliographystyle{deChicagoMyP}
+
+%%	%English
+%	\bibliographystyle{enChicagoMyP} 
+%	\bibliographystyle{unified} 
+
+
+{
+	%\tiny
+	\scriptsize
+%	\footnotesize
+	\bibliography{03literature-slides}
+}	
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\backupend
+
+
+\end{document}
+	
