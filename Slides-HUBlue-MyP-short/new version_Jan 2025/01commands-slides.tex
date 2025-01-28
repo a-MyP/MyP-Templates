@@ -1,0 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%           Commands  examples...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%% tye setting
+% German quotation marks:
+\newcommand{\gqq}[1]{\glqq{}#1\grqq{}}		%double
+\newcommand{\gq}[1]{\glq{}#1\grq{}}				%simple
+
+%% colors 
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\HuBlue}[1]{\textcolor{HuBlue}{#1}} % check huberlin.sty for defined colors 
+
+
+%% abbreviations (german)
+\newcommand{\zB}{\mbox{z.\,B.}\xspace}
+\newcommand{\idR}{\mbox{i.\,d.\,R.}\xspace}
+
+%% abbreviations (english)
+\newcommand{\cf}[1]{(cf.~#1)}	% confer = compare
+\newcommand{\ie}{i.e.~}	% id est = that is
+\newcommand{\fe}{e.g.~}	% exempli gratia = for example
+
+
+%%% object- and meta-language marking
+\newcommand{\obj}[1]{\emph{#1}}                 %Emphasising
+\newcommand{\term}[1]{\textsc{#1}}              %for abbreviated terminology
+
+
+
+%%% hyperlink colors
+\definecolor{href}{RGB}{0,55,108}          							% HuBlue, see huberlin.sty
+	\hypersetup{colorlinks,linkcolor=,urlcolor=href}
+\definecolor{cite}{RGB}{0,55,108}
+	\hypersetup{colorlinks,citecolor=cite}
+
+
+%% hyphenation 
+\hyphenation{nobreak}
+
+
+%% DEFINITION FOR APPENDIX %% for HUBlue Style
+\newcommand{\backupbegin}{
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\setcounter{framenumber}{\value{finalframe}}
+}
+

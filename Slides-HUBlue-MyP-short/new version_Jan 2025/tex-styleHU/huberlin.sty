@@ -1,0 +1,115 @@
+\usepackage{textpos}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+%% to use eps files with PDF Latex
+\usepackage{epstopdf}
+
+%% Präsentationsthemen bestimmen alle Details einer Folie.
+
+% Themen:
+% 	AnnArbor | Antibes | Bergen |
+% 	Berkeley | Berlin | Boadilla |
+% 	boxes | CambridgeUS | Copenhagen |
+% 	Darmstadt | default | Dresden |
+% 	Frankfurt | Goettingen |Hannover |
+% 	Ilmenau | JuanLesPins | Luebeck |
+% 	Madrid | Malmoe | Marburg |
+% 	Montpellier | PaloAlto | Pittsburgh |
+% 	Rochester | Singapore | Szeged |
+% 	Warsaw
+
+\usetheme{Madrid}
+
+
+%% Farbthemen bestimmen die Farben einer Folie.
+
+% Themen:
+% 	albatross | beaver | beetle |
+% 	crane | default | dolphin |
+% 	dove | fly | lily | orchid |
+% 	rose |seagull | seahorse |
+% 	sidebartab | structure |
+% 	whale | wolverine
+
+
+%% Die Themen für Schriftzeichen bestimmen die Schriftart.
+
+% Themen:
+% 	default | professionalfonts | serif |
+% 	structurebold | structureitalicserif |
+% 	structuresmallcapsserif
+
+
+%% Innere Themen spezifizieren die inneren Elemente wie Kopf-, Fußzeile, Sidebar usw. einer Folie.
+
+% Themen:
+% 	circles | default | inmargin |
+% 	rectangles | rounded
+
+\useinnertheme{rounded}
+
+
+% Themen:
+% 	default | infolines | miniframes |
+% 	shadow | sidebar | smoothbars |
+% 	smoothtree | split | tree
+
+\useoutertheme{tree}
+
+
+%\setbeamercovered{transparent}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}[frame number]
+
+\definecolor{HuBlue}{RGB}{0,55,108}
+\definecolor{HuGreen}{RGB}{0,87,44}
+%\definecolor{HuAlert}{RGB}{138,15,20} %corporate design
+\definecolor{HuAlert}{RGB}{251,63,62} %schöner
+%\definecolor{HuAlert}{RGB}{219,100,29} %orangelicher
+%\definecolor{HuAlert}{RGB}{232,147,28} %noch orangelicher
+
+
+\setbeamercolor{title}{fg=white}
+
+\setbeamercolor{frametitle}{fg=HuBlue,bg=white} % frame title
+		% frame title with rule
+		\setbeamertemplate{frametitle}{
+				\vspace{0.25cm}
+				\insertframetitle \newline 
+				\rule[0.3ex]{1.1\linewidth}{0.5pt}}
+
+
+
+\setbeamercolor{structure}{fg=HuBlue} % for header structure lines, boxes, section titles etc
+%\setbeamercolor{structure}{fg=HuGreen} % for header structure lines, boxes, section titles etc
+
+
+\setbeamercolor*{item}{fg=HuBlue}
+
+\setbeamercolor{alerted text}{fg=HuAlert}
+
+
+
+
+
+
+%\addtobeamertemplate{frametitle}{}{%
+	%%% The text in the environment will be set in a box 100mm wide, and placed on the page with its upper left corner at the position (.87\textwidth,-1.1cm).
+	%\begin{textblock*}{100mm}(.87\textwidth,-1.1cm)
+	%\includegraphics[height=1cm,width=1cm]{../../../texfiles/tex-styleHU/husiegel_blau.eps}
+	%\end{textblock*}}
+	
+	
+	%%% HU-Logo (hukombi_bwb, hukombi_bwb.ps or hukombi_bwb_rgb)
+	%
+	%% To insert HU-Logo for PDFLaTeX uncomment the following lines
+	\newcommand{\HUtitle}{\vspace{2.7cm}
+		\maketitle
+		\begin{textblock*}{2cm}(.5cm,-8.2cm)
+			\includegraphics[scale=.48]{tex-styleHU/hukombi_bwb.pdf}
+		\end{textblock*}
+	}
+
+
+

@@ -1,0 +1,123 @@
+% !TEX TS-program = pdflatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE_frami
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Compile: PDFLaTeX BibTeX PDFLaTeX PDFLaTeX
+%% Template: Beamer HUblue Style - F. Bildhauer & A. Machicao y Priemer
+%% Slides: Title of Course or Presentation 
+%% Author: Antonio Machicao y Priemer 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% for Slides:
+\documentclass[a4paper,10pt, bibtotoc]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Metadata  
+
+
+\title[Presentation Short Title]{\textbf{Presentation Title}}
+
+\subtitle{Presentation Subtitle}
+
+\author[aMyP]{
+	{\small Antonio Machicao y Priemer}
+	\\
+	{\footnotesize 
+		\url{http://www.linguistik.hu-berlin.de/staff/amyp}
+		\\
+		\href{mailto:mapriema@hu-berlin.de}{mapriema@hu-berlin.de}}
+}
+
+\institute{Institut für deutsche Sprache und Linguistik}
+
+\date{ }
+
+
+%% PACKAGES & COMMANDS 
+\input{01packages-slides}  %% All packages and options are here
+\input{01commands-slides}  %% All own commands are here
+
+
+%%%             Preamble's End
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+	
+	
+\input{02text-slides}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          APPENDIX 
+
+\appendix
+\backupbegin
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sources}
+
+
+\begin{frame}%[allowframebreaks]
+	\frametitle{Sources}
+	%%\frametitle{Internet sources}
+	
+	{%\tiny
+		%\scriptsize
+		\footnotesize
+		\begin{itemize}
+			
+			\input{03sources}
+			
+		\end{itemize}
+	}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{References}
+
+
+\begin{frame}%[allowframebreaks]
+\frametitle{References}
+
+%%	%German
+%\bibliographystyle{deChicagoMyP}
+
+%%	%English
+\bibliographystyle{enChicagoMyP} 
+%	\bibliographystyle{unified} 
+
+
+{
+	%\tiny
+	%\scriptsize
+	\footnotesize
+	\bibliography{03literature-slides}
+}	
+
+\nocite*{}
+
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% END OF APPENDIX 
+\backupend
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% END OF DOCUMENT
+
+\end{document}
+	

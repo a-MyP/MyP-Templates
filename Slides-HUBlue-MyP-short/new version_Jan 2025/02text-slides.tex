@@ -1,0 +1,202 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%            Text
+%%% Compile the master file! 
+%%% Slides template: Antonio Machicao y Priemer
+%%% Author: Antonio Machicao y Priemer
+%%% Title: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%      
+\begin{frame}
+	\HUtitle
+\end{frame}
+
+\frame{
+%\begin{multicols}{2}
+	\frametitle{Content}
+	\tableofcontents
+	%[pausesections]
+%\end{multicols}
+	}
+
+\section*{Introduction}
+\begin{frame}[t]{Introductory Remarks} 
+% [t] sets the frame alignment to the top, alternatves: c (center), b (bottom) -- can also be defined in the document class options 
+	
+	This example presentation aims to demonstrate basic functions in the \LaTeX -Beamer-Class. 
+	For everything else you might want to check \dots  
+	
+	\begin{itemize}
+
+		\item \LaTeX -Reader \hfill \citep{Freitag&MyP19a} 
+		\item \href{https://www.linguistik.hu-berlin.de/de/staff/amyp/latex}{\LaTeX -Workshop} for Linguists \hfill \citep{MyP&Eberle19a} 
+		\item \href{https://markov.htwsaar.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{The Beamer Class User Guide} \hfill  \citep{Tantau_et_al_2024}
+		
+			\begin{itemize}
+				\item and the \href{https://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf}{Beamer Class Cheat Sheet} 
+			\end{itemize}
+	\end{itemize}
+	
+	\vspace{0.5cm}
+	Otherwise \dots
+	
+		\begin{itemize}
+			\item some \gqq{Style} elements are stored in \gray{tex-styleHU/huberlin.sty} 
+			\item packages are stored in \gray{01packages-slides.tex}
+			\item customised commands are stored in \gray{01commands-slides.tex} 
+			\begin{itemize}
+				\item those should be loaded into the main .tex file via  \texttt{\textbackslash input\{\}} before \texttt{\textbackslash begin\{document\}} 
+			\end{itemize}
+		\end{itemize}
+		
+\end{frame}
+
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\frame{
+%\begin{multicols}{2}
+	\tableofcontents[currentsection,hidesubsections]
+%\end{multicols}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Introduction}
+	
+	\begin{itemize}
+		\item A presentation serves as visual support for your talk, 
+		\item[] thus information and elements should be used sparsely to not distract the audience from what you have to say. 
+		\item In this example presentation some of the most useful elements will be demonstrated. 
+	\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Useful Presenation Elements}
+\frame{
+	%\begin{multicols}{2}
+	%\frametitle{~}
+	\tableofcontents[currentsection,hidesubsections]
+	%\end{multicols}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Definitions \& Examples}
+\begin{frame}{Definitions \& examples}
+	
+	\begin{itemize}
+		\item First, you might want to start with some definitions, 
+		the \texttt{\alert{block environment}}. 
+		
+		\begin{block}{Term}
+			Definition of term
+		\end{block}
+		
+		\vspace{.5cm}
+		
+		\item And some first examples demonstrating your discussed issue. 
+		\begin{exe}
+			\ex This is an example.
+			\ex
+			\begin{xlist}
+				\ex another example
+				\ex and another one
+			\end{xlist}
+		\end{exe}
+		
+	\end{itemize}
+	
+
+	
+\end{frame}
+
+\subsection{Multicols \& Minipages}
+
+\begin{frame}{Multicols \& Minipages}
+	
+	\begin{itemize}
+		\item The \texttt{\alert{multicols environment}} and \texttt{\alert{minipage environment}} can be used to split the space into two or more columns. 
+	\end{itemize}
+
+\vspace{.5cm}
+
+\begin{minipage}[b][3cm][t]{0.35\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=.5]{pictures/Georg-Cantor-1894}
+		%\caption{Georg Cantor (ca.\ 1894)}
+	\end{figure}
+\end{minipage}\hfill
+\begin{minipage}[b][3cm][t]{0.6\textwidth}
+	\centering
+	\begin{block}{Minipage}
+		While the minipage is very useful for \textbf{images}, \textbf{tables}, \textbf{blocks}, and of course also text to put next to each other \dots
+	\end{block}
+\end{minipage}
+\vspace{.5cm}
+
+\begin{multicols}{3}
+	\dots multicols might be better suited for 
+	\begin{itemize}
+		\item text
+		\item ordered lists
+		\begin{enumerate}
+			\item or numbered lists
+			\item \dots
+		\end{enumerate}
+		
+		
+	\end{itemize}
+\end{multicols}
+	
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pauses \& simple Animation}
+
+
+\begin{frame}[t]{Pauses \& simple Animation}
+
+	\begin{itemize}
+		\item point 1
+		\item point 2
+		\item point 3
+	\end{itemize}
+
+and then nothing for dramatic effect \dots 
+\pause
+\vspace{.5cm}
+
+and now go on \dots 
+
+%\begin{exe}
+%	\item\only<2>{example 1}
+%	\begin{xlist}
+%			\only<3,4>{\item example 1}
+%			\only<3,4>{\item modified example 1}
+%	\end{xlist} 
+%	
+%	\only<4>{\item example 2}
+%\end{exe}
+
+\begin{exe}
+	\item<2-> \only<2>{example 1}
+	\begin{xlist}
+		\item<3,4-> example 1
+		\item<3,4-> modified example 1
+	\end{xlist}
+	\item<4->  example 2
+\end{exe}
+
+\end{frame}
+

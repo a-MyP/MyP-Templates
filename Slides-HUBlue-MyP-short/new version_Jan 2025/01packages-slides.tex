@@ -1,0 +1,176 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          MyP-Packages   2024.01.20
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[utf8]{inputenc}
+
+%% Text in German:
+\usepackage[english,ngerman]{babel}
+
+%%% Text in English:
+%\usepackage[ngerman,english]{babel}
+%
+%	%% Change "Bibliography" into "References"
+%	\addto{\captionsenglish}{\renewcommand{\bibname}{References}}
+
+% for German
+	%% Change ''Abbildung'' into ''Abb.'' (for: babel)
+%	\renewcommand{\thefigure}{\arabic{figure}}
+%	\addto\captionsngerman{%
+%		\renewcommand{\figurename}{Abb.}%
+%	}
+%	\renewcommand{\figurename}{Abb.}
+
+%% TIPA encoding needs T3 & T1
+\usepackage[T3,T1]{fontenc}
+
+%% Font
+%\usepackage{lmodern}
+\usepackage{libertine}
+	% change typewriter font to lmodern (smaller than tt in libertine)
+	\renewcommand\ttdefault{lmtt}
+
+%% Blind text: \blindtext \Blindtext \blindtext[5] \blindlist{itemize}[x] ...
+\usepackage{blindtext}
+
+%% ulem: Strike out
+\usepackage[normalem]{ulem}  
+
+
+%% to insert grafics
+\usepackage{graphicx} %% PDFLaTeX only accepts files with .jpg, .png, .pdf endings
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%           	Math-Symbols                   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}		% Math Symbols
+\usepackage{amsfonts}		 % Math fonts
+\usepackage{amssymb} 		% Math Symbols
+\usepackage{MnSymbol} 		% Meaning brackets
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%         Tables & Lists & Columns            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Text in columns: \begin{multicols}{n} \columnbreak \end{multicols}
+\usepackage{multicol}
+%	\setlength{\columnsep}{.5cm}	
+
+%% Tables with specified width
+\usepackage{tabularx}
+
+%% For complex tables
+\usepackage{array}
+
+%% For other tables
+\usepackage{booktabs}
+
+%% For more than one row in a table
+\usepackage{multirow}
+
+%% Special lists: itemize*
+\usepackage{mdwlist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Coloured elements                  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Trees                               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[linguistics]{forest}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Venndiagram                         
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{venndiagram}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          IPA                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[noenc,safe]{tipa}	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Vowel diagram                       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{vowel}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%      Optimality Theory                       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If you are using OT, uncomment the following lines      
+%% % OT pointing hand
+%% \usepackage{pifont}
+%% \newcommand{\hand}{\ding{43}}
+%% % OT tableaux                                                
+%% \usepackage{pstricks,colortab}    
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%          Verbatim                            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{listings}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Bibliography                        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{natbib}
+	\setcitestyle{notesep={:~}}  	% 1981:~23 instead of 1981, 23
+	\setlength{\bibsep}{0.3ex}  	% to change space between items 
+	\setcitestyle{aysep={}}				%\setcitestyle{aysep={,}}  %% Author Year vs Author, Year 
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%          Settings of the page                
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% (Vertical) Spacing
+\usepackage{setspace}
+%	\onehalfspacing
+
+%% Space for abbreviations 'i.d.R' (cf. 'localcommands')
+\usepackage{xspace}
+
+%% Margins % >> Option clash for beamer
+%\usepackage[a4paper]{geometry} 	
+%	\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%                Videos                        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Embedding videos >> it does not work
+%\usepackage{media9} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%           Examples                           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{langsci-gb4e}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%           Style Sheet HU                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% huberlin: Style sheet
+\usepackage{tex-styleHU/huberlin}
