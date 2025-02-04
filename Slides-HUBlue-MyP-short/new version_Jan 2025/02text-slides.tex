@@ -117,12 +117,12 @@
 	
 \end{frame}
 
-\subsection{Multicols \& Minipages}
+\subsection{Columns \& Minipages}
 
-\begin{frame}{Multicols \& Minipages}
+\begin{frame}{Columns \& Minipages}
 	
 	\begin{itemize}
-		\item The \texttt{\alert{multicols environment}} and \texttt{\alert{minipage environment}} can be used to split the space into two or more columns. 
+		\item The \texttt{\alert{columns environment}} and \texttt{\alert{minipage environment}} can be used to split the space into two or more columns. 
 	\end{itemize}
 
 \vspace{.5cm}
@@ -142,20 +142,25 @@
 \end{minipage}
 \vspace{.5cm}
 
-\begin{multicols}{3}
-	\dots multicols might be better suited for 
-	\begin{itemize}
-		\item text
-		\item ordered lists
-		\begin{enumerate}
-			\item or numbered lists
-			\item \dots
-		\end{enumerate}
-		
-		
-	\end{itemize}
-\end{multicols}
+	\begin{columns}
 	
+		\column[b]{0.3\textwidth}
+		Columns can be better used for 
+		Text, or 
+			
+		\column[b]{0.3\textwidth}
+			\begin{itemize}
+				\item ordered lists
+				\it or 
+			\end{itemize}
+		
+		\column[b]{0.3\textwidth}
+			\begin{enumerate}
+				\item or numbered lists
+				\item \dots
+			\end{enumerate}		
+	\end{columns}
+
 \end{frame}
 
 
@@ -198,37 +203,4 @@ and now go on \dots
 	\item<4->  example 2
 \end{exe}
 
-\end{frame}
-
-
-\begin{frame}
-	
-	\begin{columns}
-		
-		\column[t]{.3\textwidth}
-		
-		ekngngiengnaei
-		eargloanevpaenv
-		aepvanervpnaevpö
-		ekngngiengnaei
-		eargloanevpaenv
-		aepvanervpnaevpö
-		
-		\column[t]{.3\textwidth}
-		
-		ekngngiengnaei
-		eargloanevpaenv
-		aepvanervpnaevpö
-
-		
-		
-		\column[t]{.3\textwidth}
-		
-		ekngngiengnaei
-		eargloanevpaenv
-		aepvanervpnaevpö	
-		
-		
-	\end{columns}
-	
 \end{frame}
