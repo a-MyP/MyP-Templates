@@ -1,8 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				MASTER FILE for Term Paper (minimal version) -- 2023.11.06
-%%% 			Template: Antonio Machicao y Priemer & Elisabeth Eberle 
-%%%				Compile: PDFLaTeX BibTeX PDFLaTeX PDFLaTeX 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Compilation: PDFLaTeX BibTeX PDFLaTeX PDFLaTeX
+%%% Term paper (short version): Master file                
+%%% Style sheet: Antonio Machicao y Priemer   2025.04.18                                   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, 12pt]{scrartcl}
 
@@ -10,52 +10,47 @@
 	\setcounter{secnumdepth}{3}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% additional:  packages, commands, metadata and hyphenation
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  PACKAGES METADATA COMMANDS HYPHENATION            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% 
-\input{01packages-ha}
+% put all additional packages, commands, etc. you need in the 
+% following files. If you do not know what this might 
+% mean, you can safely ignore this section
 
-\input{02commands-ha}
+\input{texfiles/localpackages}
 
-%% only needed when the maketitle command is being used:
-\input{03metadata-ha}
+\input{texfiles/localmetadata} %% needed if ``sec00-Titlepage'' is not used
 
-\input{04hyphenation-ha}
+\input{texfiles/localhyphenation}
+
+\input{texfiles/localcommands}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%             Preamble's End                  
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             PREAMBLE'S END                  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{document}       
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%             Frontmatter                      
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     FRONTMATTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% The information for your ``Title page'' is in the following file
 
-\input{sections/sec00Titlepage}
-
-
-%% For an automatic ``Title page'' (from your metadata), uncomment the following line commands
-
-%\maketitle                
-%\thispagestyle{empty}
-%\clearpage
+\input{sections/sec00-Titlepage}
 
 
 %% uncomment if you have ``Preface/Summary'', ``Acknowledgements''  and/or ``Abbreviations''
 
-%	\input{sections/sec00SummaryGerman}
+%	\input{sections/sec00-SummaryGerman}
 %
-%	\input{sections/sec00Acknowledgements}
+%	\input{sections/sec00-Acknowledgements}
 %
-%	\input{sections/sec00Abbreviations}
+%	\input{sections/sec00-Abbreviations}
 	
 	
 \tableofcontents
@@ -73,13 +68,13 @@
 
 %\setcounter{page}{2} %text begins at page 2 because of contents being on page 1
 
-\input{sections/sec01Intro}
+\input{sections/sec01-Intro}
 %\clearpage
 
-\input{sections/sec02Theory}
+\input{sections/sec02-Theory}
 %\clearpage
 
-\input{sections/sec03Help}
+\input{sections/sec03-LaTeX-Help-short}
 %\clearpage
 
 
@@ -105,7 +100,7 @@
 %%%% For the Bibliography in English in the Style of "Chicago Manual of Style" use this	
 \bibliographystyle{enChicagoMyP}
 
-\bibliography{05literature-ha}
+\bibliography{texfiles/literature}
 
 \end{singlespace}
 

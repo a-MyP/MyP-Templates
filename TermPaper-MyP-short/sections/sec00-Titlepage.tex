@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Compile the master file
+%% this file contains the titlepage only
+%% Template for Term paper (Antonio Machicao y Priemer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% PUT YOUR INFORMATION HERE:
+
+%% Your name:
+\newcommand{\student}{Irene Mustermann}
+
+%% Your e-mail:
+\newcommand{\mail}{mustermann@hu-berlin.de}
+
+%% In which semester are you currently:
+\newcommand{\semesterofstudent}{5}
+
+%% Your matriculation number:
+\newcommand{\matriculationnr}{984572}
+
+%% Field of study Nr. 1:
+\newcommand{\fieldofstudyone}{B.A.\ German Linguistics }
+
+%% Field of study Nr. 2:
+\newcommand{\fieldofstudytwo}{B.A.\ Philosophy}
+
+%% For which class is the term paper (class name and number):
+\newcommand{\course}{52\,2032 Analysis of Syntactic Structures}
+
+%% Name and title of lecturer of the class:
+\newcommand{\lecturer}{Dr. Angelika Musterfrau}
+
+%% Semester inw which the class took place:
+\newcommand{\semesterofclass}{SS 2019/2019}
+
+%% Title first line:
+\newcommand{\titleone}{The effect of specificity on}
+
+%% Title second line (if not needed just leave it empty):
+\newcommand{\titletwo}{the word order of indefinite NPs in}
+
+%% Title third line (if not needed just leave it empty):
+\newcommand{\titlethree}{the German middlefield}
+
+%% Number of characters you have written:
+\newcommand{\characters}{23\,987}
+
+%% Number of words you have written:
+\newcommand{\words}{3\,489}
+
+%% Date of submission of your term paper:
+\newcommand{\deadline}{29/07/2019 }
+
+
+
+%%% YOU DON'T NEED TO TOUCH THIS
+
+\begin{titlepage}
+
+\thispagestyle{empty}
+\newgeometry{left=25mm,right=25mm,vmargin=20mm}
+
+
+\begin{flushleft}
+	\begin{small}
+		Humboldt-Universität zu Berlin\linebreak 
+		Sprach- und literaturwissenschaftliche Fakultät\linebreak 
+		Institut für deutsche Sprache und Linguistik\\[6 cm] 
+	\end{small}
+\end{flushleft}
+
+\begin{center}
+	{\Huge\textbf{\titleone}}
+	
+	\vspace{.5cm}
+	
+	{\Huge\textbf{\titletwo}}
+	
+	\vspace{.5cm}
+	
+	{\Huge\textbf{\titlethree}}\\
+\end{center}
+
+\vfill
+
+\begin{flushleft}
+\begin{small}
+
+\begin{tabularx}{\textwidth}{llXrr}
+	\textbf{Course:} &  \multicolumn{4}{l}{\course } \\
+	\textbf{Semester:} & \semesterofclass \\
+	\textbf{Lecturer:} & \lecturer \\ 
+	& & & & \\
+	%%
+	\textbf{Author:} &  \student \\
+	\textbf{Matriculation No.:} & \matriculationnr \\
+	\textbf{E-Mail:} & \href{mailto:\mail }{\mail } 
+	& & 
+	\textbf{Character count:} & \characters \\	
+	\textbf{Fields of study:} & \multicolumn{2}{l}{\fieldofstudyone } &  \textbf{Word count:} & \words \\
+	& \fieldofstudytwo  & & & \\
+	\textbf{Semester No.:} & \semesterofstudent & & \textbf{Date:} & \deadline\\	 
+\end{tabularx} 
+	
+\end{small}
+\end{flushleft}
+
+
+\clearpage
+
+\restoregeometry
+
+\end{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of title
+
