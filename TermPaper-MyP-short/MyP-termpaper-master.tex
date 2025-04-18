@@ -20,8 +20,6 @@
 
 \input{texfiles/localpackages}
 
-\input{texfiles/localmetadata} %% needed if ``sec00-Titlepage'' is not used
-
 \input{texfiles/localhyphenation}
 
 \input{texfiles/localcommands}
@@ -44,15 +42,13 @@
 \input{sections/sec00-Titlepage}
 
 
-%% uncomment if you have ``Preface/Summary'', ``Acknowledgements''  and/or ``Abbreviations''
-
+%% uncomment if you have ``Preface/Summary''
+%
 %	\input{sections/sec00-SummaryGerman}
-%
-%	\input{sections/sec00-Acknowledgements}
-%
-%	\input{sections/sec00-Abbreviations}
+%	\clearpage
 	
 	
+\thispagestyle{empty}	
 \tableofcontents
 
 \listoffigures
@@ -66,7 +62,7 @@
 %%%             Chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\setcounter{page}{2} %text begins at page 2 because of contents being on page 1
+\setcounter{page}{1} %setting the page number to 1, text begins at page 1 with the introduction
 
 \input{sections/sec01-Intro}
 %\clearpage
@@ -79,32 +75,31 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%             Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             References                      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{singlespace}
 	
 \clearpage
 
-\phantomsection %this lets literature appear in your toc
+\phantomsection %this allows hyperlink in ToC to work
 \addcontentsline{toc}{section}{References}
 
 	
-% For the Bibliography in German in the Style of "Chicago Manual of Style" use this	
-%\bibliographystyle{deChicagoMyP}
+%%%% Bibliography style in German
+%\bibliographystyle{texfiles/deChicagoMyP}
 
-%%%% For the Bibliography in English in the Style  "unified" use this	
-%\bibliographystyle{unified}
-
-%%%% For the Bibliography in English in the Style of "Chicago Manual of Style" use this	
-\bibliographystyle{enChicagoMyP}
+%%% Bibliography style in English
+%\bibliographystyle{texfiles/enChicagoMyP}
+%% OR
+\bibliographystyle{texfiles/unified}
 
 \bibliography{texfiles/literature}
 
 \end{singlespace}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 	
 \end{document}
