@@ -1,57 +1,87 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%            Text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Compile the master file! 
-%%% Slides template: Antonio Machicao y Priemer
-%%% Author: Antonio Machicao y Priemer
-%%% Title: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Loading Style and Title slide
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%      
 \begin{frame}
 	\HUtitle
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Contents slide
+
 \frame{
 %\begin{multicols}{2}
-	\frametitle{Content}
+	\frametitle{Contents}
 	\tableofcontents
-	%[pausesections]
 %\end{multicols}
 	}
 
-\section*{Introduction}
-\begin{frame}[t]{Introductory Remarks} 
-% [t] sets the frame alignment to the top, alternatves: c (center), b (bottom) -- can also be defined in the document class options 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introductory Remarks}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Introductory Remarks}
+	
 	
 	This example presentation aims to demonstrate basic functions in the \LaTeX -Beamer-Class. 
 	For everything else you might want to check \dots  
 	
 	\begin{itemize}
 
-		\item \LaTeX -Reader \hfill \citep{Freitag&MyP19a} 
-		\item \href{https://www.linguistik.hu-berlin.de/de/staff/amyp/latex}{\LaTeX -Workshop} for Linguists \hfill \citep{MyP&Eberle19a} 
-		\item \href{https://markov.htwsaar.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{The Beamer Class User Guide} \hfill  \citep{Tantau_et_al_2024}
+		\item \LaTeX -Reader \hfill \citet{Freitag&MyP19a} 
+
+		\item \href{https://www.linguistik.hu-berlin.de/de/staff/amyp/latex}{\LaTeX -Workshop} for Linguists \hfill \citet{MyP20a} 
+
+		\item \href{https://markov.htwsaar.de/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{The Beamer Class User Guide} \hfill  \citet{Tantau&Co24a}
 		
 			\begin{itemize}
-				\item and the \href{https://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf}{Beamer Class Cheat Sheet} 
+				\item and the \href{https://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf}{Beamer Class Cheat Sheet}  \hfill \citet{Masson20a}
 			\end{itemize}
 	\end{itemize}
 	
-	\vspace{0.5cm}
-	Otherwise \dots
+%	\bigskip 
+%	\pause 
+\end{frame}
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+	\frametitle{Introductory Remarks}
+		
+	Further information for these files:
 	
 		\begin{itemize}
-			\item the \gqq{Style} file for this slide is stored in \gray{tex-styleHU/huberlin.sty} 
-			\item packages are loaded in \gray{01packages-slides.tex}
-			\item customised commands are defined in \gray{01commands-slides.tex} 
-			\begin{itemize}
-				\item \gray{01packages-slides.tex} and \gray{01commands-slides.tex} are loaded in the main .tex file via  \texttt{\textbackslash input\{\}} before \texttt{\textbackslash begin\{document\}} 
-			\end{itemize}
+			\item Compile the file \codeterm{MyP-slides-master.tex} with PDF\LaTeX and Bib\TeX .
+			
+			\item The content of these slides is in \codeterm{text-slides.tex}.
+			
+			\item Extra files needed are stored in the folder \codeterm{texfiles}.
+			
+			\item The ``style'' file for these slides is defined in \codeterm{texfiles/tex-styleHU/huberlin.sty}.
+
+			\item The packages are loaded in \codeterm{texfiles/localpackages.tex}
+
+			\item Customised commands are defined in \codeterm{texfiles/localcommands.tex} 
+			
+			\item The Bib\TeX\ file is \codeterm{texfiles/localbibliography.bib}.
+			
+			\item The style files for the bibliography are \codeterm{texfiles/unified.bst} (for English) and \codeterm{texfiles/deChicagoMyP.bst} (for German).
+			
+			\item \codeterm{localpackages.tex} and \codeterm{localcommands.tex} are loaded in the ``master'' file \codeterm{MyP-slides-master.tex} via the command \verb|\input{name-of-file}|
+	
 		\end{itemize}
-		
+
 \end{frame}
 
 	
@@ -64,17 +94,23 @@
 	\tableofcontents[currentsection,hidesubsections]
 %\end{multicols}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Introduction}
 	
 	\begin{itemize}
 		\item A presentation serves as visual support for your talk,\\
-		thus information and elements should be used sparsely to not distract the audience from what you have to say. 
-		\item In this example presentation some of the most useful elements will be demonstrated. 
+		hence, information and elements should be used sparsely to not distract the audience from what you have to say. 
+		
+		\medskip 
+		
+		\item In this (very short) example presentation some of the most useful elements will be demonstrated. 
 	\end{itemize}
 
 \end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,12 +121,18 @@
 	\tableofcontents[currentsection,hidesubsections]
 	%\end{multicols}
 }
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Definitions \& Examples}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Definitions \& examples}
-	
+
+\alert{HIER WEITER}
+
 	\begin{itemize}
 		\item First, you might want to start with some definitions, 
 		the \texttt{\alert{block environment}}. 

@@ -1,0 +1,130 @@
+% !TEX TS-program = pdflatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE_frami
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Compile: PDFLaTeX BibTeX PDFLaTeX PDFLaTeX
+%% Template: Beamer HUblue Style - F. Bildhauer & A. Machicao y Priemer
+%% Author: Antonio Machicao y Priemer 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             Preamble's Start
+
+
+%%% for Slides:
+\documentclass[a4paper,10pt, bibtotoc]{beamer}
+
+%%% for Handouts:
+%%% DON'T FORGET to comment out the line above "for Slides" 
+%\documentclass[a4paper,10pt, handout]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Metadata  
+
+\title[Short Presentation Title]{\textbf{Long Presentation Title}}
+
+\subtitle{Presentation Subtitle}
+
+\author[aMyP]{
+	{\small Antonio Machicao y Priemer}
+	\\
+	{\footnotesize 
+		\url{https://hu.berlin/aMyP}
+		\\
+		\href{mailto:machicao.y.priemer@hu-berlin.de}{machicao.y.priemer@hu-berlin.de}}
+}
+
+\institute{Institut für deutsche Sprache und Linguistik}
+
+\date{ }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    PACKAGES & COMMANDS 
+
+\input{texfiles/localpackages}  %% All packages loaded are here. Include more packages here if you need them.
+
+\input{texfiles/localcommands}  %% All own commands are here. Include more commands here if you need them.
+
+
+
+%%%             Preamble's End
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+	
+	
+%% Here is the text for the slides:	
+\input{text-slides}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    APPENDIX 
+
+\appendix
+\backupbegin
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sources}
+
+
+\begin{frame}%[allowframebreaks]
+	\frametitle{Sources}
+	
+	{%\tiny
+		%\scriptsize
+		\footnotesize
+		\begin{itemize}
+			
+			\input{text-sources}
+			
+		\end{itemize}
+	}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{References}
+
+
+\begin{frame}[allowframebreaks]
+	\frametitle{References}
+
+%%%  For a bibliography in German
+%	\bibliographystyle{texfiles/deChicagoMyP}
+
+%%%  For a bibliography in English
+	\bibliographystyle{texfiles/unified} 
+
+
+{
+	%\tiny
+	%\scriptsize
+	\footnotesize
+	\bibliography{texfiles/localbibliography} %% here are the BibTeX entries
+}	
+
+\nocite*{}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\backupend
+%%%% END OF APPENDIX 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
