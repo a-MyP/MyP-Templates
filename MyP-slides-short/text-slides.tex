@@ -17,10 +17,8 @@
 %% Contents slide
 
 \frame{
-%\begin{multicols}{2}
 	\frametitle{Contents}
 	\tableofcontents
-%\end{multicols}
 	}
 
 
@@ -50,8 +48,6 @@
 			\end{itemize}
 	\end{itemize}
 	
-%	\bigskip 
-%	\pause 
 \end{frame}
 
 	
@@ -90,9 +86,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \frame{
-%\begin{multicols}{2}
 	\tableofcontents[currentsection,hidesubsections]
-%\end{multicols}
 }
 
 
@@ -116,10 +110,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Useful Presentation Elements}
 \frame{
-	%\begin{multicols}{2}
-	%\frametitle{~}
 	\tableofcontents[currentsection,hidesubsections]
-	%\end{multicols}
 }
 
 
@@ -130,8 +121,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Definitions \& examples}
-
-\alert{HIER WEITER}
 
 	\begin{itemize}
 		\item First, you might want to start with some definitions, 
@@ -154,13 +143,16 @@
 		\end{exe}
 		
 	\end{itemize}
-	
-
-	
+		
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Columns \& Minipages}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Columns \& Minipages}
 	
 	\begin{itemize}
@@ -169,43 +161,40 @@
 
 \vspace{.5cm}
 
+
 \begin{minipage}[b][3cm][t]{0.35\textwidth}
+
 	\begin{figure}
 		\centering
 		\includegraphics[scale=.5]{pictures/Georg-Cantor-1894}
 		%\caption{Georg Cantor (ca.\ 1894)}
 	\end{figure}
+
 \end{minipage}\hfill
 \begin{minipage}[b][3cm][t]{0.6\textwidth}
+
 	\centering
 	\begin{block}{Minipage}
 		While the minipage is very useful for \textbf{images}, \textbf{tables}, \textbf{blocks}, and of course also text to put next to each other \dots
 	\end{block}
+
 \end{minipage}
 \vspace{.5cm}
 
 	\begin{columns}
 	
-		\column[b]{0.3\textwidth}
-		Columns can be better used for 
-		Text, or 
+		\column[t]{0.3\textwidth}
+		This is text in the first column. This is text in the first column. This is text in the first column.
 			
-		\column[b]{0.3\textwidth}
-			\begin{itemize}
-				\item ordered lists
-				\it or 
-			\end{itemize}
+		\column[t]{0.3\textwidth}
+		This is text in the second column. This is text in the second column. This is text in the second column.
 		
-		\column[b]{0.3\textwidth}
-			\begin{enumerate}
-				\item or numbered lists
-				\item \dots
-			\end{enumerate}		
+		\column[t]{0.3\textwidth}
+		This is text in the third column. This is text in the third column. This is text in the third column.
+			
 	\end{columns}
 
 \end{frame}
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,27 +210,21 @@
 	\end{itemize}
 
 and then nothing for dramatic effect \dots 
+
 \pause
 \vspace{.5cm}
 
 and now go on \dots 
 
-%\begin{exe}
-%	\item\only<2>{example 1}
-%	\begin{xlist}
-%			\only<3,4>{\item example 1}
-%			\only<3,4>{\item modified example 1}
-%	\end{xlist} 
-%	
-%	\only<4>{\item example 2}
-%\end{exe}
-
 \begin{exe}
+
 	\item<2-> \only<2>{example 1}
+
 	\begin{xlist}
 		\item<3,4-> example 1
 		\item<3,4-> modified example 1
 	\end{xlist}
+
 	\item<4->  example 2
 \end{exe}
 

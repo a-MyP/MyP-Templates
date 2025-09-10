@@ -59,7 +59,7 @@
 \begin{document}
 	
 	
-%% Here is the text for the slides:	
+%% Put here the content for your slides:	
 \input{text-slides}
 
 
@@ -74,14 +74,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sources}
+%% put your internet sources in the file "text-sources"
 
 
 \begin{frame}%[allowframebreaks]
 	\frametitle{Sources}
 	
-	{%\tiny
-		%\scriptsize
-		\footnotesize
+	{\footnotesize
 		\begin{itemize}
 			
 			\input{text-sources}
@@ -108,14 +107,9 @@
 	\bibliographystyle{texfiles/unified} 
 
 
-{
-	%\tiny
-	%\scriptsize
-	\footnotesize
+{\footnotesize
 	\bibliography{texfiles/localbibliography} %% here are the BibTeX entries
 }	
-
-\nocite*{}
 
 
 \end{frame}

@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%          MyP-Packages   2024.01.20
+%%%          MyP-Packages   2025.09.10
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -7,20 +7,6 @@
 
 %% Text in German:
 \usepackage[english,ngerman]{babel}
-
-%%% Text in English:
-%\usepackage[ngerman,english]{babel}
-%
-%	%% Change "Bibliography" into "References"
-%	\addto{\captionsenglish}{\renewcommand{\bibname}{References}}
-
-% for German
-	%% Change ''Abbildung'' into ''Abb.'' (for: babel)
-%	\renewcommand{\thefigure}{\arabic{figure}}
-%	\addto\captionsngerman{%
-%		\renewcommand{\figurename}{Abb.}%
-%	}
-%	\renewcommand{\figurename}{Abb.}
 
 %% TIPA encoding needs T3 & T1
 \usepackage[T3,T1]{fontenc}
@@ -34,10 +20,6 @@
 %% Blind text: \blindtext \Blindtext \blindtext[5] \blindlist{itemize}[x] ...
 \usepackage{blindtext}
 
-%% ulem: Strike out
-\usepackage[normalem]{ulem}  
-
-\usepackage{verbatim}
 
 %% to insert grafics
 \usepackage{graphicx} %% PDFLaTeX only accepts files with .jpg, .png, .pdf endings
@@ -50,7 +32,6 @@
 \usepackage{amsmath}		% Math Symbols
 \usepackage{amsfonts}		 % Math fonts
 \usepackage{amssymb} 		% Math Symbols
-\usepackage{MnSymbol} 		% Meaning brackets
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,9 +54,6 @@
 %% For more than one row in a table
 \usepackage{multirow}
 
-%% Special lists: itemize*
-\usepackage{mdwlist}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%          Coloured elements                  
@@ -92,45 +70,6 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%          Venndiagram                         
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{venndiagram}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%          IPA                                 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage[noenc,safe]{tipa}	
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%          Vowel diagram                       
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{vowel}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%      Optimality Theory                       
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% If you are using OT, uncomment the following lines      
-%% % OT pointing hand
-%% \usepackage{pifont}
-%% \newcommand{\hand}{\ding{43}}
-%% % OT tableaux                                                
-%% \usepackage{pstricks,colortab}    
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%          Verbatim                            
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{listings}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%          Bibliography                        
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{natbib}
@@ -143,23 +82,8 @@
 %%%%          Settings of the page                
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% (Vertical) Spacing
-\usepackage{setspace}
-%	\onehalfspacing
-
 %% Space for abbreviations 'i.d.R' (cf. 'localcommands')
 \usepackage{xspace}
-
-%% Margins % >> Option clash for beamer
-%\usepackage[a4paper]{geometry} 	
-%	\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%                Videos                        %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%Embedding videos >> it does not work
-%\usepackage{media9} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,7 +91,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{langsci-gb4e}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
